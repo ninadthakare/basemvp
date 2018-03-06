@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        applicationId "com.webwerks.basemvp"
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+        vectorDrawables.useSupportLibrary true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.appCompat
+    implementation Deps.supportAnnotations
+    implementation Deps.constraintLayout
+    annotationProcessor Deps.daggerCompiler
+    implementation Deps.dagger
+    implementation Deps.daggerAndroidSupport
+    annotationProcessor Deps.daggerAndroidCompiler
+    implementation Deps.rxJava
+    implementation Deps.rxAndroid
+    implementation Deps.retrofit
+    implementation Deps.retrofitGson
+    implementation Deps.retrofitRx
+    implementation Deps.loggingInterceptor
+    implementation Deps.glide
+    compileOnly(Deps.autoFactory) {
+        exclude(group: 'com.google.guava')
+    }
+    annotationProcessor Deps.autoFactoryAnnotation
+    implementation Deps.timber
+    implementation Deps.rxBinding
+    implementation Deps.rxBindingAppCompat
+}

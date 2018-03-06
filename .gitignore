@@ -8,3 +8,4 @@
 /.idea/
 /gradle/
 !/gradle/wrapper/gradle-wrapper.properties
+/buildSrc/build/
