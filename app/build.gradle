@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.webwerks.basemvp"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+ext {
+    supportVersion = '27.1.0'
+    daggerVersion = '2.14.1'
+    retrofit = '2.3.0'
+    rxJava = '2.1.7'
+    rxAndroid = '2.0.2'
+    loggingInterceptor = '3.4.2'
+    glide = '4.6.1'
+    autoValue = '1.5'
+    autoFactory = '1.0-beta5'
+    timber = '4.5.1'
+    rxBinding = '2.1.1'
+    constraintLayout = '1.0.2'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${supportVersion}"
+    implementation "com.android.support:support-annotations:${supportVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${constraintLayout}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${daggerVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rxJava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
+    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingInterceptor}"
+    implementation "com.github.bumptech.glide:glide:${glide}"
+    compileOnly("com.google.auto.factory:auto-factory:${autoFactory}") {
+        exclude(group: 'com.google.guava')
+    }
+    annotationProcessor "com.google.auto.factory:auto-factory:${autoFactory}"
+    implementation "com.jakewharton.timber:timber:${timber}"
+    implementation "com.jakewharton.rxbinding2:rxbinding:${rxBinding}"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${rxBinding}"
+}
